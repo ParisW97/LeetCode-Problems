@@ -1,11 +1,8 @@
 class Solution:
     def findTheDifference(self, s: str, t: str) -> str:
-        charMap = {}
+        answer = 0
         for c in s:
-            charMap[c] = charMap.get(c,0) + 1
+            answer ^= ord(c)
         for c in t:
-            if c not in charMap:
-                return c
-            charMap[c] -= 1
-            if charMap[c] == 0:
-                del charMap[c]
+            answer ^= ord(c)
+        return chr(answer)
